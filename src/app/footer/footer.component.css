@@ -1,12 +1,23 @@
-.mat-toolbar-row {
+.mat-toolbar {
+color: #605F5F;
   background: #C3C6C6;
   min-height: 40px !important;
   height: 40px !important;
+  position: absolute;
+  bottom: 0;
+}
+
+
+.spacer{
+  flex: 1 1 auto;
 }
 @media (max-width: 640px) {
-  .mat-toolbar-row {
+  .mat-toolbar {
+    color: #605F5F;
     background: #C3C6C6;
     min-height: 30px !important;
     height: 30px !important;
+    position: absolute;
+    bottom: 0;
   }
 }

@@ -1,5 +1,9 @@
 
 
-<mat-toolbar-row>
-
-</mat-toolbar-row>
+<mat-toolbar>
+  <a mat-button *ngIf="mobileQuery.matches else pc2"><mat-icon>account_balance</mat-icon></a>
+  <ng-template #pc2> <a class="ml" mat-button>Mentions légales</a></ng-template>
+  <div class="spacer"></div>
+  <a mat-button *ngIf="mobileQuery.matches else pc"><mat-icon>email</mat-icon></a>
+ <ng-template #pc><a class="contact" mat-button>Contact</a></ng-template>
+</mat-toolbar>
