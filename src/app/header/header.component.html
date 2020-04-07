@@ -1,0 +1,10 @@
+<div class="logo"></div>
+
+<mat-toolbar color="primary">
+
+  <mat-icon *ngIf="mobileQuery.matches else pc">power_settings_new</mat-icon>
+
+
+  <ng-template #pc><a mat-button>Connexion</a></ng-template>
+
+</mat-toolbar>
