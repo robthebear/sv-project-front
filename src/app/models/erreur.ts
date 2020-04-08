@@ -1,4 +1,4 @@
-import { Webservice } from './webservice';
+import {Webservice} from './webservice';
 
 export class Erreur {
   id: number;

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Suivi} from '../models/suivi';
 import {ApplicationService} from '../services/application.service';
-import {HttpClient} from '@angular/common/http';
+import {Application} from '../models/application';
 
 @Component({
   selector: 'app-recherche',
@@ -9,18 +9,24 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./recherche.component.css']
 })
 export class RechercheComponent implements OnInit {
-suivis: Suivi[];
+  suivis: Suivi[];
+  applications: Application[];
+
   constructor(
     private applicationService: ApplicationService,
-    private httpClient: HttpClient
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.listSuivi();
+    this.listApplication();
   }
 
   private listSuivi(): void {
     this.applicationService.getSuivi().subscribe(suivis => this.suivis = suivis);
+  }
 
+  private listApplication(): void {
+    this.applicationService.getApplication().subscribe(applications => this.applications = applications);
   }
 }

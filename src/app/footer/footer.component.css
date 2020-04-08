@@ -1,5 +1,5 @@
 .mat-toolbar {
-color: #605F5F;
+  color: #605F5F;
   background: #C3C6C6;
   min-height: 40px !important;
   height: 40px !important;
@@ -8,9 +8,10 @@ color: #605F5F;
 }
 
 
-.spacer{
+.spacer {
   flex: 1 1 auto;
 }
+
 @media (max-width: 700px) {
   .mat-toolbar {
     color: #605F5F;

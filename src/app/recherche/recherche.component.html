@@ -1,1 +1,26 @@
-<p>recherche works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <!--    <div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>Recherche de WebServices</mat-card-title>
+    <mat-card-subtitle>Permet de trouver les information sur les WebServices</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Application</mat-label>
+      <mat-select>
+        <mat-option value="option" *ngFor="let suivi of suivis">{{suivi.webService}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>WebService</mat-label>
+      <mat-select>
+        <mat-option value="option" *ngFor="let application of applications">{{application.webservice}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Rechercher</button>
+  </mat-card-actions>
+</mat-card>

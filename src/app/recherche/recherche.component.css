@@ -1,0 +1,13 @@
+.example-card {
+  max-width: 300px;
+  margin: 3%;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+
+.mat-raised-button {
+  background: #C3C6C6;
+  color: #605F5F;
+
+}

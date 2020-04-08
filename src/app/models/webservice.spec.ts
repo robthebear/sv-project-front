@@ -1,4 +1,4 @@
-import { Webservice } from './webservice';
+import {Webservice} from './webservice';
 
 describe('Webservice', () => {
   it('should create an instance', () => {

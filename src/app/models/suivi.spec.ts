@@ -1,4 +1,4 @@
-import { Suivi } from './suivi';
+import {Suivi} from './suivi';
 
 describe('Suivi', () => {
   it('should create an instance', () => {

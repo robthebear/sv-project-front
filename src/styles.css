@@ -8,12 +8,12 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family:Montserrat, Roboto, "Helvetica Neue", sans-serif;
+  font-family: Montserrat, Roboto, "Helvetica Neue", sans-serif;
   z-index: 1;
   position: relative;
   height: 100%;
   background: url("src/assets/Images/logo.png") no-repeat top 25% right,
-              url("src/assets/Images/space-grey-ipad-air-with-graph-on-brown-wooden-table-187041.jpg") no-repeat top center;
+  url("src/assets/Images/space-grey-ipad-air-with-graph-on-brown-wooden-table-187041.jpg") no-repeat top center;
   background-size: 20%, cover;
 }
 

@@ -1,4 +1,4 @@
-import { Erreur } from './erreur';
+import {Erreur} from './erreur';
 
 describe('Erreur', () => {
   it('should create an instance', () => {
