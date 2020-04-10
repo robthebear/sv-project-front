@@ -1,36 +1,32 @@
-
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .logo {
   position: relative;
-  height: 6%;
+  /*height: 6%;*/
   padding: 1%;
-  background: #C3C6C6 left/20% url("src/assets/Images/logo-la-poste.png") no-repeat;
+  background: right/15% url("src/assets/Images/logo-la-poste.png") no-repeat;
 
-  z-index: 0;
+  /*z-index: 0;*/
   display: flex;
 
 }
 
-.mat-toolbar {
-  min-height: 4% !important;
-  height: 4% !important;
-}
 
 
-@media (max-width: 700px) {
+
+@media (max-width: 640px) {
   .logo {
     position: relative;
     height: 6%;
     background: #C3C6C6 center/33% url("src/assets/Images/logo-la-poste.png") no-repeat;
     min-height: 8%;
-    z-index: 0;
     display: flex;
     width: 100%;
     padding: 1%;
-  }
-
-  .mat-toolbar {
-    min-height: 7% !important;
-    height: 7% !important;
   }
 
 }

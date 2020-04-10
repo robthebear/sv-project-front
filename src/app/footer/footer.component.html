@@ -1,11 +1,24 @@
-<mat-toolbar>
-  <a mat-button *ngIf="mobileQuery.matches else pc2">
-    <mat-icon>account_balance</mat-icon>
-  </a>
-  <ng-template #pc2><a class="ml" mat-button>Mentions légales</a></ng-template>
-  <div class="spacer"></div>
-  <a mat-button *ngIf="mobileQuery.matches else pc">
-    <mat-icon>email</mat-icon>
-  </a>
-  <ng-template #pc><a class="contact" mat-button>Contact</a></ng-template>
-</mat-toolbar>
+
+<footer class="footer fixed-bottom">
+
+  <ul *ngIf="mobileQuery.matches else pc">
+
+    <li style="float:left;"><a href="#"><i class="material-icons">
+      account_balance
+    </i></a></li>
+
+    <li style="float:right;"><a href="#"><i class="material-icons">
+      email
+    </i></a></li></ul>
+
+  <ng-template #pc><ul>
+
+  <li style="float:left;"><a href="#">Mentions légales</a></li>
+
+  <li style="float:right;"><a href="#">Contact</a></li></ul></ng-template>
+
+
+
+
+
+</footer>

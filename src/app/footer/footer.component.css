@@ -1,24 +1,16 @@
-.mat-toolbar {
-  color: #605F5F;
-  background: #C3C6C6;
-  min-height: 40px !important;
-  height: 40px !important;
-  position: absolute;
-  bottom: 0;
-}
 
 
-.spacer {
-  flex: 1 1 auto;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #2F5AA7;
+
+}
+li a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
 }
 
-@media (max-width: 700px) {
-  .mat-toolbar {
-    color: #605F5F;
-    background: #C3C6C6;
-    min-height: 30px !important;
-    height: 30px !important;
-    position: absolute;
-    bottom: 0;
-  }
-}

@@ -1,26 +1,58 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <!--    <div mat-card-avatar class="example-header-image"></div>-->
-    <mat-card-title>Recherche de WebServices</mat-card-title>
-    <mat-card-subtitle>Permet de trouver les information sur les WebServices</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-form-field appearance="fill">
-      <mat-label>Application</mat-label>
-      <mat-select>
-        <mat-option value="option" *ngFor="let suivi of suivis">{{suivi.webService}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>WebService</mat-label>
-      <mat-select>
-        <mat-option value="option" *ngFor="let application of applications">{{application.webservice}}</mat-option>
-      </mat-select>
-    </mat-form-field>
 
-  </mat-card-content>
+<div class="card">
+  <div class="card-header text-center"><h5>Recherche de Webservice</h5></div>
+  <div class="card-body">
 
-  <mat-card-actions>
-    <button mat-raised-button color="primary">Rechercher</button>
-  </mat-card-actions>
-</mat-card>
+    <h6 class="card-title">Permet de rechercher des webservices dans des applications
+    </h6>
+
+    <div class="form-group col-md-8">
+      <label for="inputApplication">Application</label>
+      <select id="inputApplication" class="form-control">
+        <option selected>Choose...</option>
+        <option *ngFor="let application of applications" value="application">{{application.libelle}}</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-8">
+      <label for="inputWebService">WebService</label>
+      <select id="inputWebService" class="form-control">
+        <option selected>Choose...</option>
+        <option *ngFor="let application of applications" value="application">{{application.webservice}}</option>
+      </select>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1">
+        Aujourd'hui
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+      <label class="form-check-label" for="defaultCheck2">
+        7 derniers jours
+      </label>
+    </div>
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="theCheckbox"  data-md-icheck (change)="toggleVisibility($event)">
+      <label class="custom-control-label" for="customSwitch1">Choisir Dates</label>
+    </div>
+    <div *ngIf="marked">
+    <label>Date début</label>
+    <input type="date" class="form-control"
+           ngModel
+           name="date"
+          placeholder="A quelle date aura lieu votre évènement ? format MM/JJ/AAAA"
+           class="form-control">
+    <label>Date fin</label>
+    <input type="date" class="form-control"
+           ngModel
+           name="date"
+            placeholder="A quelle date aura lieu votre évènement ? format MM/JJ/AAAA"
+           class="form-control">
+    </div>
+    <br>
+    <button type="button" class="btn btn-secondary btn-lg btn-block">Validez</button>
+
+  </div>
+</div>
