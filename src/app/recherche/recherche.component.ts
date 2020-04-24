@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Suivi} from '../models/suivi';
-import {ApplicationService} from '../services/application.service';
-import {Application} from '../models/application';
-import {Webservice} from '../models/webservice';
+import {DataService} from '../services/data.service';
+import {Application, SvSuivi, WebService} from '../models/data.model';
 
 @Component({
   selector: 'app-recherche',
@@ -10,14 +8,15 @@ import {Webservice} from '../models/webservice';
   styleUrls: ['./recherche.component.css']
 })
 export class RechercheComponent implements OnInit {
-  suivis: Suivi[];
+  suivis: SvSuivi[];
   applications: Application[];
-  webServices: Webservice[];
+  webServices: WebService[];
   marked = false;
   theCheckbox = false;
+  private loadComponent: boolean;
 
   constructor(
-    private applicationService: ApplicationService,
+    private applicationService: DataService,
   ) {
   }
 
@@ -32,13 +31,22 @@ export class RechercheComponent implements OnInit {
   }
 
   private listApplication(): void {
-    this.applicationService.getApplication().subscribe(applications => this.applications = applications);
+    this.applicationService.getApplication().subscribe((applications) => {
+      this.applications = applications;
+      console.log(this.applications);
+    });
   }
   private listWebService(): void {
-    this.applicationService.getWebService().subscribe(webServices => this.webServices = webServices);
+    this.applicationService.getWebService().subscribe((webServices) => {
+      this.webServices = webServices;
+      console.log(this.webServices);
+    });
   }
 
   toggleVisibility(e) {
     this.marked = e.target.checked;
+  }
+  loadMyChildComponent() {
+    this.loadComponent = true;
   }
 }

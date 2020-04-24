@@ -7,12 +7,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {RechercheComponent} from './recherche/recherche.component';
-import {UtilisateurComponent} from './utilisateur/utilisateur.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SuiviComponent } from './resultat/suivi/suivi.component';
 import { ErreurComponent } from './resultat/erreur/erreur.component';
 import { StatistiqueComponent } from './resultat/statistique/statistique.component';
+import {AppRoutingModule} from './app-routing/app-routing.module';
+import { ProfilComponent } from './utilisateur/profil/profil.component';
+import { ConnexionComponent } from './utilisateur/connexion/connexion.component';
+import { InscriptionComponent } from './utilisateur/inscription/inscription.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import {environment} from '../environments/environment';
 
 
 @NgModule({
@@ -21,17 +26,32 @@ import { StatistiqueComponent } from './resultat/statistique/statistique.compone
     HeaderComponent,
     FooterComponent,
     RechercheComponent,
-    UtilisateurComponent,
     SuiviComponent,
     ErreurComponent,
     StatistiqueComponent,
+    ProfilComponent,
+    ConnexionComponent,
+    InscriptionComponent,
   ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         LayoutModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        AppRoutingModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: function tokenGetter() {
+                    return localStorage.getItem('access_token');
+                },
+                whitelistedDomains: [environment.server],
+                blacklistedRoutes: [`${environment.apiUrl}/sign-in`]
+
+            }
+
+        }),
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

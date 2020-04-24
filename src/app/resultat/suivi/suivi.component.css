@@ -1,0 +1,22 @@
+.card {
+  float: left;
+  max-width: 550px;
+  min-width: 500px;
+  margin: 15% 4% 4% 4%;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .card {
+    max-width: 400px;
+    margin: 15% 6% 6% 6%;
+    border-radius: 10px;
+    opacity: 0.9;
+  }
+}
+@media (max-width: 640px){
+.button
+{
+}
+}

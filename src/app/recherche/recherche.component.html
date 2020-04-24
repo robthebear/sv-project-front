@@ -1,4 +1,4 @@
-
+<div class="container">
 <div class="card">
   <div class="card-header text-center"><h5>Recherche de Webservice</h5></div>
   <div class="card-body">
@@ -7,7 +7,7 @@
     </h6>
 
     <div class="form-group col-md-8">
-      <label for="inputApplication">Application</label>
+      <label for="inputApplication">DataModel</label>
       <select id="inputApplication" class="form-control">
         <option selected>Choose...</option>
         <option *ngFor="let application of applications" value="application">{{application.libelle}}</option>
@@ -18,7 +18,7 @@
       <label for="inputWebService">WebService</label>
       <select id="inputWebService" class="form-control">
         <option selected>Choose...</option>
-        <option *ngFor="let application of applications" value="application">{{application.webservice}}</option>
+        <option *ngFor="let application of applications" value="webService">{{application.webService[0].webService}}</option>
       </select>
     </div>
     <div class="form-check">
@@ -52,7 +52,9 @@
            class="form-control">
     </div>
     <br>
-    <button type="button" class="btn btn-secondary btn-lg btn-block">Validez</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="loadMyChildComponent();">Validez</button>
 
   </div>
+</div>
+<div *ngIf="loadComponent"><app-suivi></app-suivi></div>
 </div>

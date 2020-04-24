@@ -1,8 +1,13 @@
+.container
+{
+  margin: 0 auto;
+}
 .card {
-  max-width: 400px;
-  margin: 6% 6% 6% 6%;
+  float: left;
+  max-width: 350px;
+  margin: 8% 4% 4% 4%;
   border-radius: 10px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 
@@ -17,10 +22,10 @@ margin-bottom: 10px;
 }
 @media (max-width: 640px){
   .card {
-    max-width: 400px;
+    max-width: 350px;
     margin: 15% 6% 6% 6%;
     border-radius: 10px;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
 
