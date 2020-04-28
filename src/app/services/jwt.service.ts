@@ -12,7 +12,6 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class JwtService {
-
   constructor(private httpClient: HttpClient, private feedbackService: FeedbackService,     private router: Router,
   ) { }
 
@@ -27,8 +26,18 @@ export class JwtService {
     return {id, role: roles[0]};
   }
 
+  private static getToken(): string {
+    return localStorage.getItem('access_token');
+  }
+  private static setToken(token: string) {
+    localStorage.setItem('access_token', token);
+  }
+  private static clearToken() {
+    localStorage.removeItem('access_token');
+    }
+
   isLogged(): boolean {
-    return Boolean(JwtService.getToken);
+    return Boolean(JwtService.getToken());
   }
 
   getId(): string {
@@ -40,9 +49,8 @@ export class JwtService {
   getRole(): string {
     if (this.isLogged()) {
       return JwtService.userFromToken(JwtService.getToken()).role.label;
-
-      // tslint:disable-next-line:align
-    } return undefined;
+    }
+    return undefined;
   }
 
   login(id: string, password: string) {
@@ -58,22 +66,13 @@ export class JwtService {
     );
   }
 
-  logout(){
+  logout() {
     if (this.isLogged()) {
       this.feedbackService.info.next(`${this.getId()} disconnected`);
+      this.router.navigate(['/']);
       JwtService.clearToken();
     }
   }
-
-  private static getToken(): string {
-    return localStorage.getItem('access_token');
-  }
-  private static setToken(token: string) {
-    localStorage.setItem('access_token', token);
-  }
-  private static clearToken() {
-    localStorage.removeItem('access_token');
-    }
 
 
 }

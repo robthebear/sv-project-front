@@ -7,20 +7,21 @@
     </h6>
 
     <div class="form-group col-md-8">
-      <label for="inputApplication">DataModel</label>
-      <select id="inputApplication" class="form-control">
-        <option selected>Choose...</option>
-        <option *ngFor="let application of applications" value="application">{{application.libelle}}</option>
+      <label for="inputApplication">Application</label>
+      <select [(ngModel)]="selectedApp"   (ngModelChange)="changement()" id="inputApplication" class="form-control">
+        <option selected>Choix...</option>
+        <option *ngFor="let application of applications" [value]="application.id" >{{application.libelle}}</option>
       </select>
     </div>
 
     <div class="form-group col-md-8">
       <label for="inputWebService">WebService</label>
       <select id="inputWebService" class="form-control">
-        <option selected>Choose...</option>
-        <option *ngFor="let application of applications" value="webService">{{application.webService[0].webService}}</option>
+        <option selected>Choix...</option>
+        <option *ngFor="let webService of webServices" value="webService">{{webService.webService}}</option>
       </select>
     </div>
+
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
       <label class="form-check-label" for="defaultCheck1">
@@ -52,8 +53,7 @@
            class="form-control">
     </div>
     <br>
-    <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="loadMyChildComponent();">Validez</button>
-
+    <button *ngIf="jwtService.isLogged()" type="button" class="btn btn-secondary btn-lg btn-block" (click)="loadMyChildComponent();">Validez</button>
   </div>
 </div>
 <div *ngIf="loadComponent"><app-suivi></app-suivi></div>

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
 import {Application, SvSuivi, WebService} from '../models/data.model';
+import {JwtService} from '../services/jwt.service';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-recherche',
@@ -9,35 +11,41 @@ import {Application, SvSuivi, WebService} from '../models/data.model';
 })
 export class RechercheComponent implements OnInit {
   suivis: SvSuivi[];
-  applications: Application[];
-  webServices: WebService[];
+  applications: Application;
+  webServices: WebService;
   marked = false;
   theCheckbox = false;
+  selectedApp;
+
+
   private loadComponent: boolean;
 
   constructor(
-    private applicationService: DataService,
+    private applicationService: DataService, private jwtService: JwtService, private reactiveFormsModule: ReactiveFormsModule, private fb: FormBuilder
   ) {
   }
 
   ngOnInit() {
-    this.listSuivi();
+    // this.listSuivi();
     this.listApplication();
-    this.listWebService();
+    // this.listWebService();
   }
 
   private listSuivi(): void {
     this.applicationService.getSuivi().subscribe(suivis => this.suivis = suivis);
   }
 
+
   private listApplication(): void {
     this.applicationService.getApplication().subscribe((applications) => {
       this.applications = applications;
-      console.log(this.applications);
     });
   }
-  private listWebService(): void {
-    this.applicationService.getWebService().subscribe((webServices) => {
+
+
+  private changement() {
+
+    this.applicationService.getWebServiceByApp(this.selectedApp).subscribe((webServices) => {
       this.webServices = webServices;
       console.log(this.webServices);
     });
@@ -46,6 +54,7 @@ export class RechercheComponent implements OnInit {
   toggleVisibility(e) {
     this.marked = e.target.checked;
   }
+
   loadMyChildComponent() {
     this.loadComponent = true;
   }

@@ -18,6 +18,9 @@ import { ConnexionComponent } from './utilisateur/connexion/connexion.component'
 import { InscriptionComponent } from './utilisateur/inscription/inscription.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
+import { ContactComponent } from './footer/contact/contact.component';
+import { MentionsLegalesComponent } from './footer/mentions-legales/mentions-legales.component';
+
 
 
 @NgModule({
@@ -32,6 +35,8 @@ import {environment} from '../environments/environment';
     ProfilComponent,
     ConnexionComponent,
     InscriptionComponent,
+    ContactComponent,
+    MentionsLegalesComponent
   ],
     imports: [
         BrowserModule,

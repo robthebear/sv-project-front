@@ -3,14 +3,15 @@
     <div class="card-body">
       <h2 class="card-title">Profil utilisateur</h2>
       <div class="card-text">
-      <h3>{{correspondants[0].id}}</h3>
-      <h3>{{correspondants[0].nom}}, {{correspondants[0].prenom}}</h3>
-      <h3>{{correspondants[0].fonction}}</h3>
+      <h3>{{correspondant.id}}</h3>
+      <h3>{{correspondant.nom}}  {{correspondant.prenom}}</h3>
+      <h3>{{correspondant.fonction}}</h3>
       <h3>Contact: </h3>
-      <h3>{{correspondants[0].email}}</h3>
-      <h3>{{correspondants[0].telephone}}</h3>
-      <h3>Profil: Utilisateur</h3>
+      <h3>{{correspondant.email}}</h3>
+      <h3>{{correspondant.telephone}}</h3>
+      <h3>{{jwtService.getRole()}}</h3>
       </div>
+      <button type="submit" class="btn btn-primary" *ngIf="jwtService.getRole() == 'ROLE_UTILISATEUR'" routerLink="/connexion">Contacter Admin</button>
     </div>
   </div>
 </div>
