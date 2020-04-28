@@ -11,7 +11,7 @@ import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 })
 export class RechercheComponent implements OnInit {
   suivis: SvSuivi[];
-  applications: Application;
+  applications: Application[];
   webServices: WebService;
   marked = false;
   theCheckbox = false;
