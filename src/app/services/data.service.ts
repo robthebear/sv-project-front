@@ -44,4 +44,11 @@ export class DataService {
   getWebServiceByApp(app: string): Observable<WebService> {
     return this.http.get<WebService>( environment.apiUrl + '/webservice/parApp/' + app);
   }
+
+  getSvSuiviByDate( web: string, dateD: string, dateF: string): Observable<SvSuivi> {
+    // if (web == '0') {
+    //   web.replace('0', '');
+    // }
+    return this.http.get<SvSuivi>(environment.apiUrl + '/svsuivi/parDate/' + dateD + '/' + dateF + '/' + web);
+  }
 }

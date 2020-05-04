@@ -40,7 +40,6 @@ export interface SvSuivi {
   dateFin: string;
   StatutRetour: string;
   statutHttp: string;
-  libelleErreur: string;
   webService: WebService;
 
 

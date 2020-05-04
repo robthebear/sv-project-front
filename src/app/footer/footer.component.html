@@ -3,19 +3,19 @@
 
   <ul *ngIf="mobileQuery.matches else pc">
 
-    <li style="float:left;"><a href="#"><i class="material-icons">
+    <li style="float:left;"><a href="#" routerLink="/mentions legales"><i class="material-icons">
       account_balance
     </i></a></li>
 
-    <li style="float:right;"><a href="#"><i class="material-icons">
+    <li style="float:right;"><a href="#" routerLink="/contact"><i class="material-icons">
       email
     </i></a></li></ul>
 
   <ng-template #pc><ul>
 
-  <li style="float:left;"><a href="#">Mentions légales</a></li>
+  <li style="float:left;"><a href="#" routerLink="/mentions legales">Mentions légales</a></li>
 
-  <li style="float:right;"><a href="#">Contact</a></li></ul></ng-template>
+  <li style="float:right;"><a href="#" routerLink="/contact">Contact</a></li></ul></ng-template>
 
 
 

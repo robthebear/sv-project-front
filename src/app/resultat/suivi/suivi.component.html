@@ -3,4 +3,13 @@
 
   <div class="card-body">
     <h6 class="card-title">Résultat des suivi des WebService</h6>
-  </div></div>
+    <tr *ngFor="let svSuivi of svSuivis">
+      <td>{{svSuivi.webService}} </td>
+      <td>{{svSuivi.date | date: "dd-MM-yyyy"}} </td>
+      <td>{{svSuivi.heureDebut}} </td>
+      <td>{{svSuivi.heureFin}} </td>
+      <td>{{svSuivi.statutRetour}} </td>
+      <td>{{svSuivi.statutHttp}} </td>
+    </tr>
+  </div>
+</div>

@@ -6,6 +6,10 @@
   border-radius: 10px;
   opacity: 0.9;
 }
+td
+{
+  margin: 10px;
+}
 
 @media (max-width: 640px) {
   .card {

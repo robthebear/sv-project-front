@@ -20,6 +20,8 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
 import { ContactComponent } from './footer/contact/contact.component';
 import { MentionsLegalesComponent } from './footer/mentions-legales/mentions-legales.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 
 
@@ -36,7 +38,8 @@ import { MentionsLegalesComponent } from './footer/mentions-legales/mentions-leg
     ConnexionComponent,
     InscriptionComponent,
     ContactComponent,
-    MentionsLegalesComponent
+    MentionsLegalesComponent,
+
   ],
     imports: [
         BrowserModule,

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
-import {Application, SvSuivi, WebService} from '../models/data.model';
+import {Application, WebService} from '../models/data.model';
 import {JwtService} from '../services/jwt.service';
-import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-recherche',
@@ -10,46 +10,51 @@ import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
   styleUrls: ['./recherche.component.css']
 })
 export class RechercheComponent implements OnInit {
-  suivis: SvSuivi[];
   applications: Application[];
   webServices: WebService;
   marked = false;
-  theCheckbox = false;
+  theCheckbox: boolean;
   selectedApp;
+  selection: FormGroup;
+  loadComponent: boolean;
+  checkbox1: boolean;
+  checkbox2: boolean;
+  const;
+  maDate: Date = new Date();
+  maintenant = ((this.maDate.getDate() - 1) + '/' + (this.maDate.getMonth() + 1) + '/' + this.maDate.getFullYear());
+  semaine = ((this.maDate.getDate() - 8) + '/' + (this.maDate.getMonth() + 1) + '/' + this.maDate.getFullYear());
 
-
-  private loadComponent: boolean;
-
-  constructor(
-    private applicationService: DataService, private jwtService: JwtService, private reactiveFormsModule: ReactiveFormsModule, private fb: FormBuilder
-  ) {
+  constructor(private dataService: DataService, private jwtService: JwtService, private reactiveFormsModule: ReactiveFormsModule, private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    // this.listSuivi();
     this.listApplication();
-    // this.listWebService();
+    this.selection = this.fb.group({
+      webService: '0',
+      dateDebut: this.semaine,
+      dateFin: this.maintenant,
+    });
+
+
   }
 
-  private listSuivi(): void {
-    this.applicationService.getSuivi().subscribe(suivis => this.suivis = suivis);
-  }
 
 
   private listApplication(): void {
-    this.applicationService.getApplication().subscribe((applications) => {
+    this.dataService.getApplication().subscribe((applications) => {
       this.applications = applications;
     });
   }
 
 
-  private changement() {
+  changement() {
 
-    this.applicationService.getWebServiceByApp(this.selectedApp).subscribe((webServices) => {
+    this.dataService.getWebServiceByApp(this.selectedApp).subscribe((webServices) => {
       this.webServices = webServices;
       console.log(this.webServices);
     });
   }
+
 
   toggleVisibility(e) {
     this.marked = e.target.checked;
@@ -57,5 +62,9 @@ export class RechercheComponent implements OnInit {
 
   loadMyChildComponent() {
     this.loadComponent = true;
+  }
+
+  recherche() {
+    console.log(this.selection.value);
   }
 }
