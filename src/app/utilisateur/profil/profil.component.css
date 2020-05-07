@@ -2,7 +2,7 @@
   margin-top: 10%;
   opacity: 0.9;
   text-align: center;
-max-width: 1000px;
+max-width: 1500px;
 }
 .card{
   border-radius: 10px;
@@ -12,3 +12,11 @@ max-width: 1000px;
   margin: 4%;
 text-align: left;
 }
+.admin{
+  float: right;
+}
+.contact
+{
+  float: bottom;
+}
+

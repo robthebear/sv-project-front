@@ -9,9 +9,6 @@ import {FooterComponent} from './footer/footer.component';
 import {RechercheComponent} from './recherche/recherche.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { SuiviComponent } from './resultat/suivi/suivi.component';
-import { ErreurComponent } from './resultat/erreur/erreur.component';
-import { StatistiqueComponent } from './resultat/statistique/statistique.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import { ProfilComponent } from './utilisateur/profil/profil.component';
 import { ConnexionComponent } from './utilisateur/connexion/connexion.component';
@@ -20,8 +17,8 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
 import { ContactComponent } from './footer/contact/contact.component';
 import { MentionsLegalesComponent } from './footer/mentions-legales/mentions-legales.component';
-import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
+import { ResultatsComponent } from './resultats/resultats.component';
+import { AdministrationComponent } from './utilisateur/profil/administration/administration.component';
 
 
 
@@ -31,14 +28,13 @@ import localeFr from '@angular/common/locales/fr';
     HeaderComponent,
     FooterComponent,
     RechercheComponent,
-    SuiviComponent,
-    ErreurComponent,
-    StatistiqueComponent,
     ProfilComponent,
     ConnexionComponent,
     InscriptionComponent,
     ContactComponent,
     MentionsLegalesComponent,
+    ResultatsComponent,
+    AdministrationComponent,
 
   ],
     imports: [

@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
-import {Application, WebService} from '../models/data.model';
+import {Application, Correspondant, WebService} from '../models/data.model';
 import {JwtService} from '../services/jwt.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ResultatsComponent} from '../resultats/resultats.component';
 
 @Component({
   selector: 'app-recherche',
@@ -10,6 +12,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
   styleUrls: ['./recherche.component.css']
 })
 export class RechercheComponent implements OnInit {
+  correspondant: Correspondant;
   applications: Application[];
   webServices: WebService;
   marked = false;
@@ -24,7 +27,7 @@ export class RechercheComponent implements OnInit {
   maintenant = ((this.maDate.getDate() - 1) + '/' + (this.maDate.getMonth() + 1) + '/' + this.maDate.getFullYear());
   semaine = ((this.maDate.getDate() - 8) + '/' + (this.maDate.getMonth() + 1) + '/' + this.maDate.getFullYear());
 
-  constructor(private dataService: DataService, private jwtService: JwtService, private reactiveFormsModule: ReactiveFormsModule, private fb: FormBuilder) {
+  constructor(private dataService: DataService, private jwtService: JwtService, private reactiveFormsModule: ReactiveFormsModule, private fb: FormBuilder, private router: Router) {
   }
 
   ngOnInit() {
@@ -37,21 +40,26 @@ export class RechercheComponent implements OnInit {
 
 
   }
-
-
-
-  private listApplication(): void {
-    this.dataService.getApplication().subscribe((applications) => {
-      this.applications = applications;
+private listApplication(): void {
+    this.dataService.getCorrespondantById(this.jwtService.getId()).subscribe( (correspondant) => {
+      this.correspondant = correspondant;
+      console.log(correspondant);
     });
-  }
+}
+
+
+  // private listApplication(): void {
+  //   this.dataService.getApplication().subscribe((applications) => {
+  //     this.applications = applications;
+  //   });
+  // }
 
 
   changement() {
 
     this.dataService.getWebServiceByApp(this.selectedApp).subscribe((webServices) => {
       this.webServices = webServices;
-      console.log(this.webServices);
+      // console.log(this.webServices);
     });
   }
 
@@ -59,12 +67,14 @@ export class RechercheComponent implements OnInit {
   toggleVisibility(e) {
     this.marked = e.target.checked;
   }
-
   loadMyChildComponent() {
     this.loadComponent = true;
   }
 
+
   recherche() {
+    // this.router.navigate(['/resultats']);
+
     console.log(this.selection.value);
   }
 }

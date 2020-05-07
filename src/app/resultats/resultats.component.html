@@ -1,0 +1,29 @@
+<div class="card">
+  <button type="button" class="btn btn-secondary btn-lg col-2" [routerLink]="'/recherche'">Rechercher</button>
+<div class="row col-12">
+  <div class="card-body col-sm-6">
+    <h5 class="card-title">Résultat des suivi du WebService : {{webService.webService}}</h5>
+    <tr *ngFor="let svSuivi of svSuivis">
+      <td>{{svSuivi.date | date: "dd-MM-yyyy"}} </td>
+      <td>{{svSuivi.heureDebut}} </td>
+      <td>{{svSuivi.heureFin}} </td>
+      <td>{{svSuivi.statutRetour}} </td>
+      <td>{{svSuivi.statutHttp}} </td>
+    </tr>
+  </div>
+
+
+
+<div class="card-body col-sm-6" >
+    <h5 class="card-title">Résultat des Erreurs du WebService : {{webService.webService}}</h5>
+    <tr *ngFor="let svErreur of svErreurs">
+      <td>{{svErreur.date | date: "dd-MM-yyyy"}} </td>
+      <td>{{svErreur.heureDebut}} </td>
+      <td>{{svErreur.heureFin}} </td>
+      <td>{{svErreur.statutRetour}} </td>
+      <td>{{svErreur.statutHttp}} </td>
+      <td>{{svErreur.libelleErreur}}</td>
+    </tr>
+  </div>
+</div>
+</div>

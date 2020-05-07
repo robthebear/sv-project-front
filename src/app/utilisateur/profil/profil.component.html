@@ -1,9 +1,12 @@
 <div class="container">
-  <div class="card">
+<div class="card">
     <div class="card-body">
-      <h2 class="card-title">Profil utilisateur</h2>
+      <h1 class="card-title">Profil utilisateur</h1>
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Détail :</h2><br>
       <div class="card-text">
-      <h3>{{correspondant.id}}</h3>
+      <h3>{{jwtService.getId()}}</h3>
       <h3>{{correspondant.nom}}  {{correspondant.prenom}}</h3>
       <h3>{{correspondant.fonction}}</h3>
       <h3>Contact: </h3>
@@ -11,7 +14,21 @@
       <h3>{{correspondant.telephone}}</h3>
       <h3>{{jwtService.getRole()}}</h3>
       </div>
-      <button type="submit" class="btn btn-primary" *ngIf="jwtService.getRole() == 'ROLE_UTILISATEUR'" routerLink="/connexion">Contacter Admin</button>
+      </div>
+        <div class="col-sm-6">
+          <h2>Liste des applications habilitées :</h2>
+      <div class="card-text">
+      <div *ngFor="let application of correspondant.applications">
+        <h4>{{application.libelle}}</h4>
+      </div>
+
+      </div>
+      </div>
+      </div>
+      <button type="submit" class="btn btn-primary contact" *ngIf="jwtService.getRole() == 'ROLE_UTILISATEUR'" routerLink="/connexion">Contacter Admin</button>
+      <button type="submit" class="btn btn-primary contact" *ngIf="jwtService.getRole() == 'ROLE_ADMIN'" routerLink="/connexion">Contacter SuperAdmin</button>
+
+      <button type="submit" class="btn btn-primary admin" *ngIf="jwtService.getRole() == 'ROLE_ADMIN' || 'ROLE_SUPERADMIN'" routerLink="/administration">Administration</button>
     </div>
   </div>
 </div>

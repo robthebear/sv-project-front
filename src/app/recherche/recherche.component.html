@@ -1,5 +1,5 @@
-<div class="container">
-<div class="card">
+<div class="row">
+<div class="card col-sm-4">
   <div class="card-header text-center"><h5>Recherche de Webservice</h5></div>
   <div class="card-body">
 
@@ -10,7 +10,7 @@
       <label for="inputApplication">Application</label>
       <select [(ngModel)]="selectedApp"   (ngModelChange)="changement()" id="inputApplication" class="form-control">
         <option selected>Choix...</option>
-        <option *ngFor="let application of applications" [value]="application.id">{{application.libelle}}</option>
+        <option *ngFor="let application of correspondant.applications" [value]="application.id">{{application.libelle}}</option>
       </select>
     </div>
     <form [formGroup]="selection" (ngSubmit)="recherche()">
@@ -51,9 +51,10 @@
            class="form-control" formControlName="dateFin">
     </div>
     <br>
-    <button *ngIf="jwtService.isLogged()" type="submit" class="btn btn-secondary btn-lg btn-block" (click)="loadMyChildComponent();">Validez</button>
+    <button type="submit" class="btn btn-secondary btn-lg btn-block" (click)="loadMyChildComponent()">Validez</button>
     </form>
   </div>
 </div>
-<div *ngIf="loadComponent"><app-suivi [selection]="selection"></app-suivi></div>
-</div>
+  <div class="col-sm-8" *ngIf="loadComponent"><app-resultats [selection]="selection"></app-resultats></div>
+
+  </div>

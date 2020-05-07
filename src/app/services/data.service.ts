@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
-import {Application, Correspondant, SvSuivi, WebService} from '../models/data.model';
+import {Application, Correspondant, SvErreur, SvSuivi, WebService} from '../models/data.model';
 import {environment} from '../../environments/environment';
 import {FeedbackService} from './feedback.service';
 import {catchError, tap} from 'rxjs/operators';
@@ -35,8 +35,8 @@ export class DataService {
   getWebService(): Observable<WebService[]> {
     return this.http.get<WebService[]>(environment.apiUrl + '/webservice');
   }
-  getCorrespondant(): Observable<Correspondant> {
-    return this.http.get<Correspondant>(environment.apiUrl + '/correspondant');
+  getCorrespondant(): Observable<Correspondant[]> {
+    return this.http.get<Correspondant[]>(environment.apiUrl + '/correspondant');
   }
   getCorrespondantById(id: string): Observable<Correspondant> {
     return this.http.get<Correspondant>(environment.apiUrl + '/correspondant/id/' + id);
@@ -50,5 +50,13 @@ export class DataService {
     //   web.replace('0', '');
     // }
     return this.http.get<SvSuivi>(environment.apiUrl + '/svsuivi/parDate/' + dateD + '/' + dateF + '/' + web);
+  }
+
+  getSvErreurByDate( web: string, dateD: string, dateF: string): Observable<SvErreur> {
+    return this.http.get<SvErreur>(environment.apiUrl + '/sverreur/parDate/' + dateD + '/' + dateF + '/' + web);
+  }
+
+  getWebServiceParId(id: number): Observable<WebService> {
+    return this.http.get<WebService>(environment.apiUrl + '/webservice/' + id);
   }
 }

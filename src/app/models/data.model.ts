@@ -3,6 +3,7 @@ export interface Application {
   libelle: string;
   type: string;
   webService: WebService[];
+  correspondants: Correspondant[];
 
   // constructor(id: string, libelle: string, type: string, webService: WebService[]) {
   //   this.id = id;
@@ -100,6 +101,7 @@ export interface Correspondant {
   fonction: string;
   email: string;
   telephone: string;
+  applications: Application[];
 
 
   // constructor(id: string, nom: string, prenom: string, fonction: string, email: string, telephone: string) {

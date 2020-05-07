@@ -12,7 +12,7 @@ export class FooterComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 700px)');
+    this.mobileQuery = media.matchMedia('(max-width: 990px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this.mobileQueryListener);
   }

@@ -1,17 +1,18 @@
 .card {
-  float: left;
-  max-width: 550px;
+  /*max-width: 900px;*/
   min-width: 500px;
-  margin: 15% 4% 4% 4%;
   border-radius: 10px;
+  margin: 10% 3% 10%;
+  padding: 2%;
   opacity: 0.9;
+  text-overflow: ellipsis;
 }
 td
 {
   margin: 10px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 990px) {
   .card {
     max-width: 400px;
     margin: 15% 6% 6% 6%;
@@ -19,8 +20,4 @@ td
     opacity: 0.9;
   }
 }
-@media (max-width: 640px){
-.button
-{
-}
-}
+
