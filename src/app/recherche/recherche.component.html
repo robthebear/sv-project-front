@@ -1,60 +1,69 @@
 <div class="row">
-<div class="card col-sm-4">
-  <div class="card-header text-center"><h5>Recherche de Webservice</h5></div>
-  <div class="card-body">
+  <div class="card col-sm-4">
+    <div class="card-header text-center"><h5>Recherche de Webservice</h5></div>
+    <div class="card-body">
 
-    <h6 class="card-title">Permet de rechercher des webservices dans des applications
-    </h6>
+      <h6 class="card-title">Permet de rechercher des webservices dans des applications
+      </h6>
 
-    <div class="form-group col-md-8">
-      <label for="inputApplication">Application</label>
-      <select [(ngModel)]="selectedApp"   (ngModelChange)="changement()" id="inputApplication" class="form-control">
-        <option selected>Choix...</option>
-        <option *ngFor="let application of correspondant.applications" [value]="application.id">{{application.libelle}}</option>
-      </select>
-    </div>
-    <form [formGroup]="selection" (ngSubmit)="recherche()">
-    <div class="form-group col-md-8">
-      <label for="inputWebService">WebService</label>
-      <select id="inputWebService" class="form-control" formControlName="webService">
-        <option selected>Choix...</option>
-        <option *ngFor="let webService of webServices" [value]="webService.id">{{webService.webService}}</option>
-      </select>
-    </div>
+      <div class="form-group col-md-8">
+        <label for="inputApplication">Application</label>
+        <select [(ngModel)]="selectedApp" (ngModelChange)="changement()" id="inputApplication" class="form-control">
+          <option selected>Choix...</option>
+          <option *ngFor="let application of correspondant?.applications"
+                  [value]="application?.id">{{application?.libelle}}</option>
+        </select>
+      </div>
+      <form [formGroup]="selection" (ngSubmit)="recherche()">
+        <div class="form-group col-md-8">
+          <label for="inputWebService">WebService</label>
+          <select id="inputWebService" class="form-control" formControlName="webService" size="1">
+            <option selected>Choix...</option>
+            <option *ngFor="let webService of webServices" [value]="webService?.id">{{webService?.webService}}</option>
+          </select>
+        </div>
 
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" [value]="maintenant" id="checkbox1" [attr.disabled]="(checkbox2 || theCheckbox)" [checked]="checkbox1" (change)="checkbox1 = !checkbox1">
-      <label class="form-check-label" for="checkbox1">
-        Hier
-      </label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [value]="maintenant" id="checkbox1"
+                 [attr.disabled]="(checkbox2 || theCheckbox)" [checked]="checkbox1" (change)="checkbox1 = !checkbox1"
+                 (click)="selectedValue(maintenant,$event)">
+          <label class="form-check-label" for="checkbox1">
+            Hier
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [value]="maintenant" id="checkbox2"
+                 [attr.disabled]="(checkbox1 || theCheckbox)" [checked]="checkbox2" (change)="checkbox2 = !checkbox2">
+          <label class="form-check-label" for="checkbox2">
+            Semaine
+          </label>
+        </div>
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="theCheckbox" [attr.disabled]="checkbox1 || checkbox2"
+                 data-md-icheck (change)="toggleVisibility($event) || (theCheckbox = !theCheckbox)"
+                 [checked]="theCheckbox">
+          <label class="custom-control-label" for="theCheckbox">Choisir Dates</label>
+        </div>
+        <div *ngIf="marked">
+          <label>Date début</label>
+          <input type="date"
+                 name="date"
+                 placeholder="A quelle date aura lieu votre évènement ? format JJ/MM/AAAA"
+                 class="form-control" formControlName="dateDebut">
+          <label>Date fin</label>
+          <input type="date"
+                 name="date"
+                 placeholder="A quelle date aura lieu votre évènement ? format JJ/MM/AAAA"
+                 class="form-control" formControlName="dateFin">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-lg btn-block" (click)="loadMyChildComponent()">Validez
+        </button>
+      </form>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" [value]="" id="checkbox2" [attr.disabled]="(checkbox1 || theCheckbox)" [checked]="checkbox2" (change)="checkbox2 = !checkbox2">
-      <label class="form-check-label" for="checkbox2">
-        Semaine
-      </label>
-    </div>
-    <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="theCheckbox" [attr.disabled]="checkbox1 || checkbox2" data-md-icheck (change)="toggleVisibility($event) || (theCheckbox = !theCheckbox)" [checked]="theCheckbox">
-      <label class="custom-control-label" for="theCheckbox">Choisir Dates</label>
-    </div>
-    <div *ngIf="marked">
-    <label>Date début</label>
-    <input type="date"
-           name="date"
-          placeholder="A quelle date aura lieu votre évènement ? format JJ/MM/AAAA"
-           class="form-control" formControlName="dateDebut">
-    <label>Date fin</label>
-    <input type="date"
-           name="date"
-            placeholder="A quelle date aura lieu votre évènement ? format JJ/MM/AAAA"
-           class="form-control" formControlName="dateFin">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-secondary btn-lg btn-block" (click)="loadMyChildComponent()">Validez</button>
-    </form>
   </div>
+  <div class="col-sm-8" *ngIf="loadComponent">
+    <app-resultats [selection]="selection"></app-resultats>
+  </div>
+
 </div>
-  <div class="col-sm-8" *ngIf="loadComponent"><app-resultats [selection]="selection"></app-resultats></div>
-
-  </div>

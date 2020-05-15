@@ -21,7 +21,7 @@ export class ProfilComponent implements OnInit {
   private Correspondant(): void {
     this.applicationService.getCorrespondantById(this.jwtService.getId()).subscribe((correspondant) => {
       this.correspondant = correspondant;
-      console.log(correspondant);
+      // console.log(correspondant);
     });
   }
 }

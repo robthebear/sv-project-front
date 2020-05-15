@@ -18,7 +18,8 @@ import {environment} from '../environments/environment';
 import { ContactComponent } from './footer/contact/contact.component';
 import { MentionsLegalesComponent } from './footer/mentions-legales/mentions-legales.component';
 import { ResultatsComponent } from './resultats/resultats.component';
-import { AdministrationComponent } from './utilisateur/profil/administration/administration.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { AdminApplicationComponent } from './administration/admin-application/admin-application.component';
 
 
 
@@ -35,6 +36,7 @@ import { AdministrationComponent } from './utilisateur/profil/administration/adm
     MentionsLegalesComponent,
     ResultatsComponent,
     AdministrationComponent,
+    AdminApplicationComponent,
 
   ],
     imports: [

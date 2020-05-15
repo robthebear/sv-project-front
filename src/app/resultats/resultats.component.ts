@@ -1,18 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {SvErreur, SvSuivi, WebService} from '../models/data.model';
 import {RechercheComponent} from '../recherche/recherche.component';
 import {DataService} from '../services/data.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-resultats',
   templateUrl: './resultats.component.html',
   styleUrls: ['./resultats.component.css']
 })
 export class ResultatsComponent implements OnInit {
   @Input() selection: FormGroup;
-  svErreurs: SvErreur;
-  svSuivis: SvSuivi;
+  svErreurs: SvErreur[];
+  svSuivis: SvSuivi[];
   webService: WebService;
 
 
@@ -20,9 +21,9 @@ export class ResultatsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ListErreur();
-    this.ListSuivi();
-    this.Webservice();
+    // this.ListErreur();
+    // this.ListSuivi();
+    // this.Webservice();
 
   }
 

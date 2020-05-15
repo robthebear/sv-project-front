@@ -21,9 +21,11 @@
         <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true"
            routerLink="">Home <span class="sr-only">(current)</span></a>
         <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true"
-           routerLink="/profil">{{jwtService.getId()}}</a>
+           routerLink="profil">{{correspondant?.prenom}} {{correspondant?.nom}}</a>
         <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true"
-           routerLink="/recherche">Recherche</a>
+           routerLink="recherche">Recherche</a>
+        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true" routerLink="administration">Admninistration</a>
+        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" (show)="application != null" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true" routerLink="">Application</a>
 
       </div>
     </div>
