@@ -37,8 +37,9 @@ export interface WebService {
 
 export interface SvSuivi {
   id: number;
-  dateDebut: string;
-  dateFin: string;
+  date: string;
+  heureDebut: string;
+  heureFin: string;
   StatutRetour: string;
   statutHttp: string;
   webService: WebService;
@@ -75,8 +76,9 @@ export interface SvStatistique {
 
 export interface SvErreur {
   id: number;
-  dateDebut: string;
-  dateFin: string;
+  date: string;
+  heureDebut: string;
+  heureFin: string;
   StatutRetour: string;
   statutHttp: string;
   libelleErreur: string;
