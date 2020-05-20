@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Gestion des applications</h1>
+      <form [formGroup]="appliForm" (ngSubmit)="miseAJourAppli()">
+    <div class="card-text">
+
+      <div class="input-group-append" *ngFor="let application of applications">
+
+        <h4>Application à mettre à jour : </h4>
+      <p>  {{application?.id}}  </p>
+        <div class="form-group">
+          <input type="text" class="form-control" id="libelle" formControlName="libelle" value="{{application?.libelle}}" placeholder="libelle"/>
+        </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="type" formControlName="type" value=" {{application?.type}}" placeholder="type"/>
+          </div>
+            <button type="submit" class="btn btn-secondary">valider</button>
+      </div>
+  </div>
+      </form>
+</div>
+</div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card form-check">
+    <div class="card-body">
+      <h1 class="card-title">Administration Utilisateurs</h1>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group col-md-8">
+            <h5 for="inputCorrespondant">Correspondants</h5>
+            <select [(ngModel)]="selectCorrespondant" (ngModelChange)="changement()" id="inputCorrespondant"
+                    class="form-control">
+              <option selected>Choix...</option>
+              <option *ngFor="let correspondant of correspondants"
+                      [value]="correspondant.id">{{correspondant.prenom}} {{correspondant.nom}}</option>
+            </select>
+          </div>
+          <h2 *ngIf="correspondant">Détail :</h2><br>
+          <div class="card-text">
+            <h4>{{correspondant?.nom}}  {{correspondant?.prenom}}</h4>
+            <h4>{{correspondant?.fonction}}</h4>
+            <h4 *ngIf="correspondant">Contact: </h4>
+            <h4>{{correspondant?.email}}</h4>
+            <h4>{{correspondant?.telephone}}</h4>
+            <h4>{{habilitation?.roleList}}</h4>
+          </div>
+        </div>
+
+        <div  *ngIf="correspondant" class="col-sm-4">
+          <h2>Liste des applications habilitées :</h2>
+          <div class="card-text scroller">
+            <div *ngFor="let application of correspondant?.applications">
+              <p>
+              <input class="form-check-input regular-checkbox big-checkbox" (change)="onChange (application.id, $event.target.checked)" type="checkbox" name="{{application.id}}" id="{{application.id}}" checked>
+              <label class="form-check-label" for="{{application.id}}">   {{application?.libelle}}</label>
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <pre>{{ idFormArray | json}}</pre>
+
+        <div  *ngIf="correspondant" class="col-sm-4">
+          <h2>Liste des applications : </h2><br>
+          <div class="card-text scroller">
+            <div *ngFor="let application of applications">
+              <p>
+              <input class="form-check-input regular-checkbox big-checkbox" (change)="onChange (application.id, $event.target.checked)" type="checkbox" name="{{application.id}}" id="{{application}}">
+              <label class="form-check-label" for="{{application}}"><p>  {{application.libelle}}</p></label>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-secondary btn-lg btn-block col-md-2" (click)="validationChangements()">Valider</button>
+    </div>
+
+  </div>
+
+
+</div>
