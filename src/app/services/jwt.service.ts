@@ -23,7 +23,7 @@ export class JwtService {
       return {label: authority.authority};
     });
 
-    return {id, role: roles[0]};
+    return {id, roleList: roles[0]};
   }
 
   private static getToken(): string {
@@ -48,7 +48,7 @@ export class JwtService {
   }
   getRole(): string {
     if (this.isLogged()) {
-      return JwtService.userFromToken(JwtService.getToken()).role.label;
+      return JwtService.userFromToken(JwtService.getToken()).roleList.label;
     }
     return undefined;
   }

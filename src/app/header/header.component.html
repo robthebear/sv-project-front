@@ -25,7 +25,7 @@
         <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true"
            routerLink="recherche">Recherche</a>
         <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true" routerLink="administration">Admninistration</a>
-        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" (show)="application != null" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true" routerLink="">Application</a>
+        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true" routerLink="admin-gestion">Application</a>
 
       </div>
     </div>

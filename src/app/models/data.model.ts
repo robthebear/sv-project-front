@@ -39,7 +39,7 @@ export interface SvSuivi {
   id: number;
   date: string;
   heureDebut: string;
-  heureFin: string;
+  duree: number;
   StatutRetour: string;
   statutHttp: string;
   webService: WebService;
@@ -78,7 +78,7 @@ export interface SvErreur {
   id: number;
   date: string;
   heureDebut: string;
-  heureFin: string;
+  duree: number;
   StatutRetour: string;
   statutHttp: string;
   libelleErreur: string;
@@ -118,7 +118,7 @@ export interface Correspondant {
 
 export interface Habilitation {
   id: string;
-  role: Role;
+  roleList: Role;
 
 }
 

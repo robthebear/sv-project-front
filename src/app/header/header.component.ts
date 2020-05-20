@@ -11,7 +11,6 @@ import {Application, Correspondant} from '../models/data.model';
 })
 export class HeaderComponent implements OnDestroy, OnInit {
 correspondant: Correspondant;
-application: Application;
   mobileQuery: MediaQueryList;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private jwtService: JwtService, private dataService: DataService) {
@@ -28,16 +27,8 @@ application: Application;
   }
   ngOnInit() {
     this.Correspondant();
-    this.Application();
   }
-  private Application(): void {
-    this.dataService.getApplicationVide().subscribe((application) => {
-      this.application = application;
-      console.log('ok');
-      console.log(application);
-    });
-    console.log('ok');
-  }
+
 
   private Correspondant(): void {
     this.dataService.getCorrespondantById(this.jwtService.getId()).subscribe((correspondant) => {

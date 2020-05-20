@@ -2,7 +2,7 @@ import {Injectable, Input} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
-import {Application, Correspondant, SvErreur, SvSuivi, WebService} from '../models/data.model';
+import {Application, Correspondant, Habilitation, SvErreur, SvSuivi, WebService} from '../models/data.model';
 import {environment} from '../../environments/environment';
 import {FeedbackService} from './feedback.service';
 import {catchError, tap} from 'rxjs/operators';
@@ -39,8 +39,8 @@ export class DataService {
   getCorrespondant(): Observable<Correspondant[]> {
     return this.http.get<Correspondant[]>(environment.apiUrl + '/correspondant');
   }
-  getApplicationVide(): Observable<Application> {
-    return this.http.get<Application>(environment.apiUrl + '/application/applicationAMettreAJour');
+  getApplicationVide(): Observable<Application[]> {
+    return this.http.get<Application[]>(environment.apiUrl + '/application/applicationAMettreAJour');
   }
   mettreAJourApplication(id: string, application: Application): Observable<Application> {
     return this.http.put<Application>(environment.apiUrl + '/mettreAjourApplication/' + id, application);
@@ -53,9 +53,6 @@ export class DataService {
   }
 
   getSvSuiviByDate( web: string, dateD: string, dateF: string): Observable<SvSuivi[]> {
-    // if (web == '0') {
-    //   web.replace('0', '');
-    // }
     return this.http.get<SvSuivi[]>(environment.apiUrl + '/svsuivi/parDate/' + dateD + '/' + dateF + '/' + web);
   }
 
@@ -73,6 +70,8 @@ export class DataService {
   updateCorrespondant(id: string, correspondant: { applications: Application[] }): Observable<Correspondant> {
     return this.http.put<Correspondant>(environment.apiUrl + '/correspondant/update/' + id, correspondant);
   }
-
+getRoleById(id: string): Observable<Habilitation> {
+    return this.http.get<Habilitation>(environment.apiUrl + '/habilitation/role/' + id);
+}
 
 }

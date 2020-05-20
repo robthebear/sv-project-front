@@ -6,7 +6,7 @@
       <tr *ngFor="let svSuivi of svSuivis">
         <td>{{svSuivi?.date | date: "dd-MM-yyyy"}} </td>
         <td>{{svSuivi?.heureDebut}} </td>
-        <td>{{svSuivi?.heureFin}} </td>
+        <td>{{svSuivi?.duree}} </td>
         <td>{{svSuivi?.StatutRetour}} </td>
         <td>{{svSuivi?.statutHttp}} </td>
       </tr>
@@ -18,7 +18,7 @@
       <tr *ngFor="let svErreur of svErreurs">
         <td>{{svErreur?.date | date: "dd-MM-yyyy"}} </td>
         <td>{{svErreur?.heureDebut}} </td>
-        <td>{{svErreur?.heureFin}} </td>
+        <td>{{svErreur?.duree}} </td>
         <td>{{svErreur?.StatutRetour}} </td>
         <td>{{svErreur?.statutHttp}} </td>
         <td>{{svErreur?.libelleErreur}}</td>

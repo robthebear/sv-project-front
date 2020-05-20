@@ -9,6 +9,7 @@ import {ContactComponent} from '../footer/contact/contact.component';
 import {MentionsLegalesComponent} from '../footer/mentions-legales/mentions-legales.component';
 import {ResultatsComponent} from '../resultats/resultats.component';
 import {AdministrationComponent} from '../administration/administration.component';
+import {AdminApplicationComponent} from '../administration/admin-application/admin-application.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'mentions legales', component: MentionsLegalesComponent},
   {path: 'resultats', component: ResultatsComponent},
-  {path: 'administration', component: AdministrationComponent}
+  {path: 'administration', component: AdministrationComponent},
+  {path: 'admin-gestion', component: AdminApplicationComponent}
 
 ];
 @NgModule({
