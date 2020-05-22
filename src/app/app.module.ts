@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {LayoutModule} from '@angular/cdk/layout';
+import {NgbModule, NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -20,6 +21,7 @@ import { MentionsLegalesComponent } from './footer/mentions-legales/mentions-leg
 import { ResultatsComponent } from './resultats/resultats.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { AdminApplicationComponent } from './administration/admin-application/admin-application.component';
+import {NgbdModalConfirm} from './administration/admninistration-confirmation';
 
 
 
@@ -37,6 +39,7 @@ import { AdminApplicationComponent } from './administration/admin-application/ad
     ResultatsComponent,
     AdministrationComponent,
     AdminApplicationComponent,
+    NgbdModalConfirm
 
   ],
     imports: [
@@ -57,10 +60,13 @@ import { AdminApplicationComponent } from './administration/admin-application/ad
             }
 
         }),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+      NgbModule
     ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NgbdModalConfirm]
+
 })
 export class AppModule {
 

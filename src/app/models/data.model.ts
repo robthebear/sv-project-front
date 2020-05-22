@@ -104,6 +104,7 @@ export interface Correspondant {
   email: string;
   telephone: string;
   applications: Application[];
+  habilitaion: Habilitation;
 
 
   // constructor(id: string, nom: string, prenom: string, fonction: string, email: string, telephone: string) {

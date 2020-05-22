@@ -13,11 +13,31 @@
           <input type="text" class="form-control" id="libelle" formControlName="libelle" value="{{application?.libelle}}" placeholder="libelle"/>
         </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="type" formControlName="type" value=" {{application?.type}}" placeholder="type"/>
-          </div>
+            <select name="type" id="typeApp" formControlName="type">
+              <option selected>Sélection</option>
+              <option value="HTTP">HTTP</option>
+              <option value="SGDB">SGDB</option>
+            </select>          </div>
             <button type="submit" class="btn btn-secondary">valider</button>
       </div>
   </div>
+      </form>
+      <form [formGroup]="nouvelleApplication" (ngSubmit)="ajoutApplication()">
+        <div class="form-group">
+          <input type="text" class="form-control" id="idApp" formControlName="id" placeholder="ID Application">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="libelleApp" formControlName="libelle" placeholder="Libelle de l'application">
+        </div>
+        <div class="form-group">
+          <select name="type" id="typeApp" formControlName="type">
+            <option selected>Sélection</option>
+            <option value="HTTP">HTTP</option>
+            <option value="SGDB">SGDB</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-secondary">Ajouter application</button>
+
       </form>
 </div>
 </div>

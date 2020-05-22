@@ -12,59 +12,20 @@
 }
 
 .card-text {
-  /*margin: 4%;*/
   text-align: left;
   margin: 0;
 }
 
-.regular-checkbox {
-  -webkit-appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #cacece;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-  padding: 9px;
-  border-radius: 3px;
-  display: inline-block;
-  position: relative;
-}
 
-.regular-checkbox:active, .regular-checkbox:checked:active {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-
-
-.regular-checkbox:checked {
-  background-color: #e9ecee;
-  border: 1px solid #adb8c0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
-  color: #99a1a7;
-}
-
-.regular-checkbox:checked:after {
-  content: '\2714';
-  font-size: 14px;
-  position: absolute;
-  top: 0px;
-  left: 3px;
-  color: #99a1a7;
-}
-
-.big-checkbox {
-  padding: 18px;
-}
-p
-{
+p {
   margin: 8%;
 }
 
-.big-checkbox:checked:after {
-  font-size: 28px;
-  left: 6px;
-}
+
 
 label {
   font-size: larger;
+  margin-left: 4px;
 }
 
 button {
@@ -76,11 +37,155 @@ button {
   min-height: 250px;
   max-height: 300px;
   overflow-y: scroll;
-padding: 0;
+  padding: 0;
 }
 
-/*input {*/
-/*  vertical-align: bottom;*/
-/*  position: relative;*/
-/*  *overflow: hidden;*/
-/*}*/
+
+.plus-minus {
+  --primary: #010c3d;
+  --secondary: #fafbff;
+  --duration: 0.5s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 240px;
+  perspective: 240px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border: 4px solid var(--primary);
+  background-size: 300% 300%;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+  transform: scale(var(--scale, 1)) translateZ(0);
+  -webkit-animation: var(--name, unchecked) var(--duration) ease forwards;
+  animation: var(--name, unchecked) var(--duration) ease forwards;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  top: 2px;
+}
+.plus-minus:before, .plus-minus:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: var(--height, 16px);
+  left: 6px;
+  top: var(--top, 6px);
+  background: var(--background, var(--primary));
+  -webkit-animation: var(--name-icon-b, var(--name-icon, unchecked-icon)) var(--duration) ease forwards;
+  animation: var(--name-icon-b, var(--name-icon, unchecked-icon)) var(--duration) ease forwards;
+}
+.plus-minus:before {
+  -webkit-clip-path: polygon(0 6px, 6px 6px, 6px 0, 10px 0, 10px 6px, 16px 6px, 16px 10px, 10px 10px, 10px 16px, 6px 16px, 6px 10px, 0 10px);
+  clip-path: polygon(0 6px, 6px 6px, 6px 0, 10px 0, 10px 6px, 16px 6px, 16px 10px, 10px 10px, 10px 16px, 6px 16px, 6px 10px, 0 10px);
+}
+.plus-minus:after {
+  --height: 4px;
+  --top: 12px;
+  --background: var(--secondary);
+  --name-icon-b: var(--name-icon-a, checked-icon);
+}
+.plus-minus:active {
+  --scale: 0.95;
+}
+.plus-minus:checked {
+  --name: checked;
+  --name-icon-b: checked-icon;
+  --name-icon-a: unchecked-icon;
+  --primary: #b60409;
+
+}
+
+@-webkit-keyframes checked-icon {
+  from {
+    -webkit-transform: translateZ(12px);
+    transform: translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateX(16px) rotateY(90deg) translateZ(12px);
+    transform: translateX(16px) rotateY(90deg) translateZ(12px);
+  }
+}
+
+@keyframes checked-icon {
+  from {
+    -webkit-transform: translateZ(12px);
+    transform: translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateX(16px) rotateY(90deg) translateZ(12px);
+    transform: translateX(16px) rotateY(90deg) translateZ(12px);
+  }
+}
+@-webkit-keyframes unchecked-icon {
+  from {
+    -webkit-transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+    transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateZ(12px);
+    transform: translateZ(12px);
+  }
+}
+@keyframes unchecked-icon {
+  from {
+    -webkit-transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+    transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateZ(12px);
+    transform: translateZ(12px);
+  }
+}
+@-webkit-keyframes checked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 50% 50%;
+  }
+}
+@keyframes checked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 50% 50%;
+  }
+}
+@-webkit-keyframes unchecked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 50% 50%;
+  }
+}
+@keyframes unchecked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 50% 50%;
+  }
+}
+

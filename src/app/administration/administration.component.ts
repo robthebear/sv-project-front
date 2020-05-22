@@ -13,9 +13,7 @@ export class AdministrationComponent implements OnInit {
   correspondants: Correspondant[];
   applications: Application[];
   selectCorrespondant;
-  selectedApp;
   correspondant: Correspondant;
-  selection: FormGroup;
   idFormArray: Application[] = [];
   habilitation: Habilitation;
 
@@ -28,6 +26,8 @@ export class AdministrationComponent implements OnInit {
 
   }
 
+
+
   onChange(id: Application, isChecked: boolean) {
     if (isChecked) {
       this.idFormArray.push(id);
@@ -37,9 +37,7 @@ export class AdministrationComponent implements OnInit {
     }
   }
 
-  duplicate() {
-    console.log(this.idFormArray);
-  }
+
 
   private ListCorrespondants(): void {
     this.dataservice.getCorrespondant().subscribe((correspondants) => {
@@ -69,6 +67,10 @@ export class AdministrationComponent implements OnInit {
       console.log(this.habilitation.roleList);
     });
 
+  }
+
+  supprimerCorrespondant() {
+    this.dataservice.suppressionCorrespondant(this.selectCorrespondant).subscribe();
   }
 
 

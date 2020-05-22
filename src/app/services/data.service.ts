@@ -39,11 +39,18 @@ export class DataService {
   getCorrespondant(): Observable<Correspondant[]> {
     return this.http.get<Correspondant[]>(environment.apiUrl + '/correspondant');
   }
+  postApplication(application: Application): Observable<Application> {
+    return this.http.post<Application>(environment.apiUrl + '/application/', application);
+  }
+  suppressionCorrespondant(id: string): Observable<Correspondant> {
+    return  this.http.delete<Correspondant>( environment.apiUrl + '/correspondant/' + id);
+  }
+
   getApplicationVide(): Observable<Application[]> {
     return this.http.get<Application[]>(environment.apiUrl + '/application/applicationAMettreAJour');
   }
   mettreAJourApplication(id: string, application: Application): Observable<Application> {
-    return this.http.put<Application>(environment.apiUrl + '/mettreAjourApplication/' + id, application);
+    return this.http.put<Application>(environment.apiUrl + '/application/mettreAjourApplication/' + id, application);
   }
     getCorrespondantById(id: string): Observable<Correspondant> {
     return this.http.get<Correspondant>(environment.apiUrl + '/correspondant/id/' + id);

@@ -12,7 +12,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class AdminApplicationComponent implements OnInit {
   applications: Application[];
   appliForm: FormGroup;
-  selectedApp;
+  selectedApp: string;
+  nouvelleApplication: FormGroup;
 
 
   constructor(private dataService: DataService, private fb: FormBuilder) { }
@@ -20,17 +21,38 @@ export class AdminApplicationComponent implements OnInit {
   ngOnInit() {
     this.Application();
     this.appliForm = this.fb.group({
-      id: [this.selectedApp.value()],
       libelle: [],
       type: [],
     });
+    this.nouvelleApplication = this.fb.group( {
+      id: [],
+      libelle: [],
+      type: [],
+    });
+
   }
   private Application(): void {
     this.dataService.getApplicationVide().subscribe((applications) => {
       this.applications = applications;
+      for (let application of applications) {
+        this.selectedApp = application.id;
+      }
+
     });
   }
   miseAJourAppli() {
+    this.dataService.mettreAJourApplication(this.selectedApp, this.appliForm.value).subscribe();
+
+
+    console.log(this.selectedApp);
     console.log(this.appliForm.value);
+    this.Application();
+    this.appliForm.reset();
+  }
+
+  ajoutApplication() {
+    this.dataService.postApplication(this.nouvelleApplication.value).subscribe();
+    console.log(this.nouvelleApplication.value);
+    this.nouvelleApplication.reset();
   }
 }
