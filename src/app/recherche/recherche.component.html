@@ -5,16 +5,16 @@
 
       <h6 class="card-title">Permet de rechercher des webservices dans des applications
       </h6>
-
+      <form [formGroup]="selection" (ngSubmit)="recherche()">
       <div class="form-group col-md-8">
         <label for="inputApplication">Application</label>
-        <select [(ngModel)]="selectedApp" (ngModelChange)="changement()" id="inputApplication" class="form-control">
+        <select [(ngModel)]="selectedApp" (ngModelChange)="changement()" id="inputApplication" class="form-control" formControlName="application">
           <option selected>Choix...</option>
           <option *ngFor="let application of correspondant?.applications"
                   [value]="application?.id">{{application?.libelle}}</option>
         </select>
       </div>
-      <form [formGroup]="selection" (ngSubmit)="recherche()">
+
         <div class="form-group col-md-8">
           <label for="inputWebService">WebService</label>
           <select id="inputWebService" class="form-control" formControlName="webService" size="1">

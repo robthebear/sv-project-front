@@ -1,8 +1,9 @@
-import { Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {SvErreur, SvSuivi, WebService} from '../models/data.model';
+import {Resultats, SvErreur, SvSuivi, WebService} from '../models/data.model';
 import {RechercheComponent} from '../recherche/recherche.component';
 import {DataService} from '../services/data.service';
+import {$} from 'protractor';
 
 @Component({
   selector: 'app-resultats',
@@ -14,7 +15,16 @@ export class ResultatsComponent implements OnInit {
   svErreurs: SvErreur[];
   svSuivis: SvSuivi[];
   webService: WebService;
+  resultats: Resultats [];
 
+  myType = 'PieChart';
+  myData = [
+    ['London', 8136000],
+    ['New York', 8538000],
+    ['Paris', 2244000],
+    ['Berlin', 3470000],
+    ['Kairo', 19500000]
+  ];
 
   constructor(private rechercheComponent: RechercheComponent, private dataService: DataService) {
   }
@@ -23,12 +33,13 @@ export class ResultatsComponent implements OnInit {
     this.Webservice();
     this.ListErreur();
     this.ListSuivi();
+    this.Resultat();
 
 
   }
 
   private Webservice(): void {
-    this.dataService.getWebServiceParId(this.selection.get('webService').value).subscribe( (webService) => {
+    this.dataService.getWebServiceParId(this.selection.get('webService').value).subscribe((webService) => {
       this.webService = webService;
     });
   }
@@ -46,4 +57,14 @@ export class ResultatsComponent implements OnInit {
       console.log(this.svSuivis);
     });
   }
+
+  private Resultat(): void {
+    this.dataService.getResultat(this.selection.get('application').value, this.selection.get('webService').value, this.selection.get('dateDebut').value.replace(/\//gi, '-'), this.selection.get('dateFin').value.replace(/\//gi, '-')).subscribe((resultats) => {
+      this.resultats = resultats;
+      console.log(this.resultats);
+    });
+  }
+
+
+
 }

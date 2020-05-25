@@ -127,4 +127,32 @@ export interface Role {
   label: string;
 
 }
+export interface Resultats {
+  webService: string;
+  dateDebut: Date;
+  dateFin: Date;
+  nbConnexion: number;
+  tpsConnexion: number;
+  nbErreur: number;
+  tpsErreur: number;
+  libelles: Libelles;
+  https: Https;
+  retours: Retours;
+
+}
+export interface Libelles {
+  libelle: string;
+  nbLibelle: number;
+
+}
+export interface Https {
+  http: string;
+  nbHttp: number;
+
+}
+export interface Retours {
+  retour: string;
+  nbRetour: number;
+
+}
 

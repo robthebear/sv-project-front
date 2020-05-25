@@ -2,7 +2,7 @@ import {Injectable, Input} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
-import {Application, Correspondant, Habilitation, SvErreur, SvSuivi, WebService} from '../models/data.model';
+import {Application, Correspondant, Habilitation, Resultats, SvErreur, SvSuivi, WebService} from '../models/data.model';
 import {environment} from '../../environments/environment';
 import {FeedbackService} from './feedback.service';
 import {catchError, tap} from 'rxjs/operators';
@@ -67,6 +67,9 @@ export class DataService {
     return this.http.get<SvErreur[]>(environment.apiUrl + '/sverreur/parDate/' + dateD + '/' + dateF + '/' + web);
   }
 
+  getResultat(app: string, web: number, dateD: string, dateF: string): Observable<Resultats[]> {
+    return this.http.get<Resultats[]>(environment.apiUrl + '/resultat/' + app + '/' + web + '/' + dateD + '/' + dateF);
+  }
   getWebServiceParId(id: number): Observable<WebService> {
     return this.http.get<WebService>(environment.apiUrl + '/webservice/' + id);
   }

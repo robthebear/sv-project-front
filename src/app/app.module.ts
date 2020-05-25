@@ -22,6 +22,7 @@ import { ResultatsComponent } from './resultats/resultats.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { AdminApplicationComponent } from './administration/admin-application/admin-application.component';
 import {NgbdModalConfirm} from './administration/admninistration-confirmation';
+import {GoogleChartsModule} from 'angular-google-charts';
 
 
 
@@ -61,7 +62,8 @@ import {NgbdModalConfirm} from './administration/admninistration-confirmation';
 
         }),
         ReactiveFormsModule,
-      NgbModule
+      NgbModule,
+      GoogleChartsModule.forRoot(),
     ],
   providers: [],
   bootstrap: [AppComponent],

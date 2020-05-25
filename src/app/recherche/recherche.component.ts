@@ -32,6 +32,7 @@ export class RechercheComponent implements OnInit {
   ngOnInit() {
     this.listApplication();
     this.selection = this.fb.group({
+      application: [],
       webService: '0',
       dateDebut: this.semaine,
       dateFin: this.maintenant,
@@ -60,6 +61,7 @@ private listApplication(): void {
       this.webServices = webServices;
       // console.log(this.webServices);
     });
+    this.selection.value.application = this.selectedApp;
   }
 
 
@@ -73,7 +75,7 @@ private listApplication(): void {
 
   recherche() {
     // this.router.navigate(['/resultats']);
-
+    this.selection.value.application = this.selectedApp;
     console.log(this.selection.value);
   }
   selectedValue(value: any, event) {
