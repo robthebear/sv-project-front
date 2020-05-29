@@ -23,8 +23,8 @@ import { AdministrationComponent } from './administration/administration.compone
 import { AdminApplicationComponent } from './administration/admin-application/admin-application.component';
 import {NgbdModalConfirm} from './administration/admninistration-confirmation';
 import {GoogleChartsModule} from 'angular-google-charts';
-
-
+import { ChartsModule} from 'ng2-charts';
+import { ChartComponent } from './resultats/chart.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,9 @@ import {GoogleChartsModule} from 'angular-google-charts';
     ResultatsComponent,
     AdministrationComponent,
     AdminApplicationComponent,
-    NgbdModalConfirm
+    NgbdModalConfirm,
+    ChartComponent
+
 
   ],
     imports: [
@@ -64,6 +66,7 @@ import {GoogleChartsModule} from 'angular-google-charts';
         ReactiveFormsModule,
       NgbModule,
       GoogleChartsModule.forRoot(),
+      ChartsModule
     ],
   providers: [],
   bootstrap: [AppComponent],
