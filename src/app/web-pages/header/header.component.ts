@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import { JwtService} from '../services/jwt.service';
-import {DataService} from '../services/data.service';
-import {Application, Correspondant} from '../models/data.model';
+import { JwtService} from '../../services/jwt.service';
+import {DataService} from '../../services/data.service';
+import {Application, Correspondant} from '../../models/data.model';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,7 @@ export class HeaderComponent implements OnDestroy, OnInit {
 correspondant: Correspondant;
   mobileQuery: MediaQueryList;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private jwtService: JwtService, private dataService: DataService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private jwtService: JwtService,private dataService: DataService) {
     this.mobileQuery = media.matchMedia('(max-width: 700px');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this.mobileQueryListener);

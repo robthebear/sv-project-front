@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Application} from '../../models/data.model';
-import {DataService} from '../../services/data.service';
+import { Application} from '../../../models/data.model';
+import {DataService} from '../../../services/data.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 

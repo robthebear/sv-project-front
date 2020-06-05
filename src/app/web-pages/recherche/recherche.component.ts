@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {DataService} from '../services/data.service';
-import {Application, Correspondant, WebService} from '../models/data.model';
-import {JwtService} from '../services/jwt.service';
+import {DataService} from '../../services/data.service';
+import {Application, Correspondant, WebService} from '../../models/data.model';
+import {JwtService} from '../../services/jwt.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ResultatsComponent} from '../resultats/resultats.component';

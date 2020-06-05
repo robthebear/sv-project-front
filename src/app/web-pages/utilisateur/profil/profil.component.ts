@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../services/data.service';
-import {Correspondant} from '../../models/data.model';
-import {JwtService} from '../../services/jwt.service';
+import {DataService} from '../../../services/data.service';
+import {Correspondant} from '../../../models/data.model';
+import {JwtService} from '../../../services/jwt.service';
 
 @Component({
   selector: 'app-profil',
