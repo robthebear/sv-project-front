@@ -36,6 +36,7 @@ export class AdminApplicationComponent implements OnInit {
       this.applications = applications;
       for (let application of applications) {
         this.selectedApp = application.id;
+        // this.Application();
       }
 
     });
@@ -46,8 +47,9 @@ export class AdminApplicationComponent implements OnInit {
 
     console.log(this.selectedApp);
     console.log(this.appliForm.value);
-    this.Application();
+
     this.appliForm.reset();
+location.reload();
   }
 
   ajoutApplication() {

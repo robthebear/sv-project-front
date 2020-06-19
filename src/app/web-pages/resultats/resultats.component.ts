@@ -66,6 +66,7 @@ export class ResultatsComponent implements OnInit {
 
     this.dateDebut = this.selection.get('dateDebut').value.replace(/\//gi, '-');
     this.dateFin = this.selection.get('dateFin').value.replace(/\//gi, '-');
+    // this.selection.reset();
   }
 
   private Webservice(): void {
@@ -112,6 +113,7 @@ export class ResultatsComponent implements OnInit {
 
 
     }, );
+
   }
 
 
