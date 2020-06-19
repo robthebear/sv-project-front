@@ -21,10 +21,11 @@ import { MentionsLegalesComponent } from './web-pages/footer/mentions-legales/me
 import { ResultatsComponent } from './web-pages/resultats/resultats.component';
 import { AdministrationComponent } from './web-pages/administration/administration.component';
 import { AdminApplicationComponent } from './web-pages/administration/admin-application/admin-application.component';
-import {NgbdModalConfirm} from './web-pages/administration/admninistration-confirmation';
 import {GoogleChartsModule} from 'angular-google-charts';
 import { ChartsModule} from 'ng2-charts';
 import { ChartComponent } from './web-pages/resultats/chart.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,8 @@ import { ChartComponent } from './web-pages/resultats/chart.component';
     ResultatsComponent,
     AdministrationComponent,
     AdminApplicationComponent,
-    NgbdModalConfirm,
-    ChartComponent
+    ChartComponent,
+
 
 
   ],
@@ -66,11 +67,13 @@ import { ChartComponent } from './web-pages/resultats/chart.component';
         ReactiveFormsModule,
       NgbModule,
       GoogleChartsModule.forRoot(),
-      ChartsModule
+      ChartsModule,
+      ModalModule.forRoot(),
+      AlertModule.forRoot()
     ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [NgbdModalConfirm]
+  entryComponents: []
 
 })
 export class AppModule {
