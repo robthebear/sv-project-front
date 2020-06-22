@@ -18,8 +18,8 @@ export class ResultatsComponent implements OnInit {
   svSuivis: SvSuivi[];
   webService: WebService;
   resultats: Resultats [];
- dateDebut;
- dateFin;
+  dateDebut;
+  dateFin;
 
 
   pieChartOptions = {
@@ -95,7 +95,7 @@ export class ResultatsComponent implements OnInit {
       this.resultats = resultats;
       console.log(this.resultats);
       for (let resultat of resultats) {
-         this.charts.push({
+        this.charts.push({
           title: resultat.webService,
           type: 'PieChart',
           data: [
