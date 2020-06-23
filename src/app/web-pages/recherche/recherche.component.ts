@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {DataService} from '../services/data.service';
-import {Application, Correspondant, WebService} from '../models/data.model';
-import {JwtService} from '../services/jwt.service';
+import {DataService} from '../../services/data.service';
+import {Application, Correspondant, WebService} from '../../models/data.model';
+import {JwtService} from '../../services/jwt.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ResultatsComponent} from '../resultats/resultats.component';
@@ -30,6 +30,7 @@ export class RechercheComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.listApplication();
     this.selection = this.fb.group({
       application: [],
@@ -56,12 +57,18 @@ private listApplication(): void {
 
 
   changement() {
+    this.selection.value.webService = '0';
+    console.log(this.selection.value.webService);
 
-    this.dataService.getWebServiceByApp(this.selectedApp).subscribe((webServices) => {
+    this.loadComponent = false;
+
+    // this.selection.value.application = undefined;
+this.dataService.getWebServiceByApp(this.selectedApp).subscribe((webServices) => {
       this.webServices = webServices;
       // console.log(this.webServices);
     });
-    this.selection.value.application = this.selectedApp;
+this.selection.value.application = this.selectedApp;
+    console.log(this.selection.value.application);
   }
 
 
@@ -69,14 +76,17 @@ private listApplication(): void {
     this.marked = e.target.checked;
   }
   loadMyChildComponent() {
+
     this.loadComponent = true;
+
   }
 
 
   recherche() {
+
     // this.router.navigate(['/resultats']);
     this.selection.value.application = this.selectedApp;
-    console.log(this.selection.value);
+
   }
   selectedValue(value: any, event) {
     if (event.target.checked) {

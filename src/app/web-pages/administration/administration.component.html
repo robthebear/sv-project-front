@@ -23,10 +23,8 @@
             <h4>{{correspondant?.telephone}}</h4>
             <h4>{{habilitation?.roleList}}</h4>
           </div>
-            <button class="btn btn-outline-primary mr-2" (click)="open('focusFirst')">
-              <div>Open confirm modal</div>
-              <div class="text-dark" aria-hidden="true"><small>&times; button will be focused</small></div>
-            </button>
+
+
 <!--          <button class="btn btn-secondary btn-lg btn-block col-md-2" (click)="supprimerCorrespondant()">Supprimer Correspondant</button>-->
         </div>
         </div>
@@ -58,7 +56,25 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-secondary btn-lg btn-block col-md-2" (click)="validationChangements()">Valider</button>
+      <button *ngIf="correspondant" type="submit" class="btn btn-secondary btn-lg btn-block col-md-2" (click)="openModal(template)">Valider</button>
+      <br><br>
+<!--      <pre class="card card-block card-header">{{message}}</pre>-->
+      <ng-template #template>
+        <div class="modal-body text-center">
+          <p>Confirmez-vous la modification ? </p>
+          <button type="button" class="btn btn-default" (click)="validationChangements(success)" >Oui</button>
+          <button type="button" class="btn btn-primary" (click)="decline(annule)" >Non</button>
+        </div>
+
+      </ng-template>
+      <ng-template #success ><alert type="info" dismissOnTimeout="2000">
+        <strong> Modifications confirmées ! </strong>
+      </alert></ng-template>
+      <ng-template #annule><alert type="warning" dismissOnTimeout="2000">
+        <strong> Opération annulée ! </strong>
+      </alert></ng-template>
+
+<!--      <button type="submit" class="btn btn-secondary btn-lg btn-block col-md-2" (click)="validationChangements()">Valider</button>-->
     </div>
 
   </div>

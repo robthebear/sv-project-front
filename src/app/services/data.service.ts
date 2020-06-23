@@ -26,16 +26,6 @@ export class DataService {
     );
   }
 
-  getSuivi(): Observable<SvSuivi[]> {
-    return this.http.get<SvSuivi[]>(environment.apiUrl + '/svsuivi');
-  }
-
-  getApplication(): Observable<Application[]> {
-    return this.http.get<Application[]>(environment.apiUrl + '/application');
-  }
-  getWebService(): Observable<WebService[]> {
-    return this.http.get<WebService[]>(environment.apiUrl + '/webservice');
-  }
   getCorrespondant(): Observable<Correspondant[]> {
     return this.http.get<Correspondant[]>(environment.apiUrl + '/correspondant');
   }

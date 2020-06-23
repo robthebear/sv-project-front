@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from '../services/data.service';
-import {Application, Correspondant, Habilitation} from '../models/data.model';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component, OnInit, TemplateRef, Type} from '@angular/core';
+import {DataService} from '../../services/data.service';
+import {Application, Correspondant, Habilitation} from '../../models/data.model';
+import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
+
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-administration',
@@ -16,8 +18,10 @@ export class AdministrationComponent implements OnInit {
   correspondant: Correspondant;
   idFormArray: Application[] = [];
   habilitation: Habilitation;
+  modalRef: BsModalRef;
+  message: string;
 
-  constructor(private dataservice: DataService, private fb: FormBuilder, private router: Router) {
+  constructor(private dataservice: DataService, private fb: FormBuilder, private router: Router, private modalService: BsModalService) {
   }
 
 
@@ -74,7 +78,7 @@ export class AdministrationComponent implements OnInit {
   }
 
 
-  validationChangements() {
+  validationChangements(success: TemplateRef<any>) {
     this.dataservice.updateCorrespondant(this.correspondant.id, {applications: this.idFormArray})
       .subscribe((correspondant) => {
         this.correspondant = correspondant;
@@ -93,6 +97,21 @@ export class AdministrationComponent implements OnInit {
     this.dataservice.getCorrespondantById(this.correspondant.id);
     // location.reload();
     // this.changement()
+    this.modalRef.hide();
+    this.modalRef = this.modalService.show(success, {class: 'modal-sm'});
+
+  }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+
+
+  decline(annule: TemplateRef<any>): void {
+    this.modalRef.hide();
+    this.modalRef = this.modalService.show(annule, {class: 'modal-sm'});
+
+
   }
 
 }
