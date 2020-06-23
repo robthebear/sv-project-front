@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {JwtService} from '../../../services/jwt.service';
+import {JwtService} from '../../services/jwt.service';
 import {Router} from '@angular/router';
-import {DataService} from '../../../services/data.service';
-import {FeedbackService} from '../../../services/feedback.service';
-import {Habilitation} from '../../../models/habilitation';
+import {DataService} from '../../services/data.service';
+import {FeedbackService} from '../../services/feedback.service';
+import {Habilitation} from '../../models/habilitation';
 
 @Component({
   selector: 'app-connexion',

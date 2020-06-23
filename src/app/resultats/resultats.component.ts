@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {Resultats, SvErreur, SvSuivi, WebService} from '../../models/data.model';
+import {Resultats, SvErreur, SvSuivi, WebService} from '../models/data.model';
 import {RechercheComponent} from '../recherche/recherche.component';
-import {DataService} from '../../services/data.service';
+import {DataService} from '../services/data.service';
 import {ChartErrorEvent, GoogleChartComponent} from 'angular-google-charts';
 import { Router} from '@angular/router';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
@@ -18,8 +18,8 @@ export class ResultatsComponent implements OnInit {
   svSuivis: SvSuivi[];
   webService: WebService;
   resultats: Resultats [];
-  dateDebut;
-  dateFin;
+ dateDebut;
+ dateFin;
 
 
   pieChartOptions = {
@@ -66,7 +66,6 @@ export class ResultatsComponent implements OnInit {
 
     this.dateDebut = this.selection.get('dateDebut').value.replace(/\//gi, '-');
     this.dateFin = this.selection.get('dateFin').value.replace(/\//gi, '-');
-    // this.selection.reset();
   }
 
   private Webservice(): void {
@@ -95,14 +94,20 @@ export class ResultatsComponent implements OnInit {
       this.resultats = resultats;
       console.log(this.resultats);
       for (let resultat of resultats) {
+        // console.log('coucou');
+        // this.nomWebService = resultat.webService;
+        // console.log(this.nomWebService);
+        // this.pieChartData = {data: [resultat.nbConnexion, resultat.nbErreur, resultat.tpsConnexion, resultat.tpsErreur]};
+        // console.log(this.pieChartData);
+        // @ts-ignore
         this.charts.push({
           title: resultat.webService,
           type: 'PieChart',
           data: [
             ['Nombre de connexions : ' + resultat.nbConnexion, resultat.nbConnexion],
-            ['Nombre d\'\erreurs : ' + resultat.nbErreur, resultat.nbErreur],
+            ['Nombre d\'\ erreurs : ' + resultat.nbErreur, resultat.nbErreur],
             ['temps de connexions en Secondes : ' + (resultat.tpsConnexion / 1000) + ' s', (resultat.tpsConnexion / 1000)],
-            ['temps d\'\erreurs en Secondes : ' + (resultat.tpsErreur / 1000) + ' s', (resultat.tpsErreur / 1000)]
+            ['temps d\'\ erreurs en Secondes : ' + (resultat.tpsErreur / 1000) + ' s', (resultat.tpsErreur / 1000)]
           ],
 
         });
@@ -113,9 +118,11 @@ export class ResultatsComponent implements OnInit {
 
 
     }, );
-
   }
 
 
+  onChartClick(event) {
+    console.log(event);
+  }
 
 }

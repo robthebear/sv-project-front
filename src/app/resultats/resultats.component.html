@@ -2,9 +2,9 @@
   <h2>Resultats du {{dateDebut}}</h2>
   <div *ngFor="let chart of charts">
 
-    <div class="card-body col-12">
+      <div class="card-body col-12">
       <h3>WebService : {{chart.title}}</h3>
       <chart [chartData]="chart.data"></chart>
-    </div>
+      </div>
   </div>
 </div>

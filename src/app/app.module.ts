@@ -5,27 +5,26 @@ import {NgbModule, NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-b
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HeaderComponent} from './web-pages/header/header.component';
-import {FooterComponent} from './web-pages/footer/footer.component';
-import {RechercheComponent} from './web-pages/recherche/recherche.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {RechercheComponent} from './recherche/recherche.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing/app-routing.module';
-import { ProfilComponent } from './web-pages/utilisateur/profil/profil.component';
-import { ConnexionComponent } from './web-pages/utilisateur/connexion/connexion.component';
-import { InscriptionComponent } from './web-pages/utilisateur/inscription/inscription.component';
+import { ProfilComponent } from './utilisateur/profil/profil.component';
+import { ConnexionComponent } from './utilisateur/connexion/connexion.component';
+import { InscriptionComponent } from './utilisateur/inscription/inscription.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
-import { ContactComponent } from './web-pages/footer/contact/contact.component';
-import { MentionsLegalesComponent } from './web-pages/footer/mentions-legales/mentions-legales.component';
-import { ResultatsComponent } from './web-pages/resultats/resultats.component';
-import { AdministrationComponent } from './web-pages/administration/administration.component';
-import { AdminApplicationComponent } from './web-pages/administration/admin-application/admin-application.component';
+import { ContactComponent } from './footer/contact/contact.component';
+import { MentionsLegalesComponent } from './footer/mentions-legales/mentions-legales.component';
+import { ResultatsComponent } from './resultats/resultats.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { AdminApplicationComponent } from './administration/admin-application/admin-application.component';
+import {NgbdModalConfirm} from './administration/admninistration-confirmation';
 import {GoogleChartsModule} from 'angular-google-charts';
 import { ChartsModule} from 'ng2-charts';
-import { ChartComponent } from './web-pages/resultats/chart.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { AlertModule } from 'ngx-bootstrap/alert';
+import { ChartComponent } from './resultats/chart.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +40,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ResultatsComponent,
     AdministrationComponent,
     AdminApplicationComponent,
-    ChartComponent,
-
+    NgbdModalConfirm,
+    ChartComponent
 
 
   ],
@@ -67,13 +66,11 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         ReactiveFormsModule,
       NgbModule,
       GoogleChartsModule.forRoot(),
-      ChartsModule,
-      ModalModule.forRoot(),
-      AlertModule.forRoot()
+      ChartsModule
     ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [NgbdModalConfirm]
 
 })
 export class AppModule {

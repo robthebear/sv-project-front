@@ -1,8 +1,7 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import { Application} from '../../../models/data.model';
-import {DataService} from '../../../services/data.service';
+import { Component, OnInit } from '@angular/core';
+import { Application} from '../../models/data.model';
+import {DataService} from '../../services/data.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -15,10 +14,9 @@ export class AdminApplicationComponent implements OnInit {
   appliForm: FormGroup;
   selectedApp: string;
   nouvelleApplication: FormGroup;
-  modalRef: BsModalRef;
-  message: string;
 
-  constructor(private dataService: DataService, private fb: FormBuilder, private modalService: BsModalService) { }
+
+  constructor(private dataService: DataService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.Application();
@@ -38,22 +36,18 @@ export class AdminApplicationComponent implements OnInit {
       this.applications = applications;
       for (let application of applications) {
         this.selectedApp = application.id;
-        // this.Application();
       }
 
     });
   }
-  miseAJourAppli(success: TemplateRef<any>) {
+  miseAJourAppli() {
     this.dataService.mettreAJourApplication(this.selectedApp, this.appliForm.value).subscribe();
 
 
     console.log(this.selectedApp);
     console.log(this.appliForm.value);
-
+    this.Application();
     this.appliForm.reset();
-    location.reload();
-    this.modalRef.hide();
-    this.modalRef = this.modalService.show(success, {class: 'modal-sm'});
   }
 
   ajoutApplication() {
@@ -61,14 +55,4 @@ export class AdminApplicationComponent implements OnInit {
     console.log(this.nouvelleApplication.value);
     this.nouvelleApplication.reset();
   }
-  decline(annule: TemplateRef<any>): void {
-    this.modalRef.hide();
-    this.modalRef = this.modalService.show(annule, {class: 'modal-sm'});
-
-
-  }
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
-  }
-
 }
