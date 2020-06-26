@@ -12,13 +12,13 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true"
-           routerLink="">Home <span class="sr-only">(current)</span></a>
+           routerLink="">Accueil <span class="sr-only">(current)</span></a>
         <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true"
            routerLink="profil">{{correspondant?.prenom}} {{correspondant?.nom}}</a>
         <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true"
            routerLink="recherche">Recherche</a>
-        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true" routerLink="administration">Admninistration</a>
-        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" class="nav-item nav-link active notification" href="#" tabindex="-1" aria-disabled="true" routerLink="admin-gestion"><span>Application</span>  <span *ngIf="this.j > 0" class="badge">{{this.j}}</span>
+        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" class="nav-item nav-link active" href="#" tabindex="-1" aria-disabled="true" routerLink="administration">Admninistration Utilisateurs</a>
+        <a *ngIf="jwtService.isLogged() && (jwtService.getRole() != 'ROLE_UTILISATEUR')" class="nav-item nav-link active notification" href="#" tabindex="-1" aria-disabled="true" routerLink="admin-gestion"><span>Getion des Applications</span>  <span *ngIf="this.j > 0" class="badge">{{this.j}}</span>
         </a>
 
       </div>

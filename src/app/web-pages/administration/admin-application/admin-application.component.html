@@ -3,27 +3,27 @@
     <div class="card-body">
       <h1 class="card-title">Gestion des applications</h1>
       <form class="pure-form" [formGroup]="appliForm">
+        <div class="form-row align-items-center">
 
+      <div class="input-group-append col-auto" *ngFor="let application of applications">
 
-      <div class="input-group-append" *ngFor="let application of applications">
-
-        <h4>Application à mettre à jour :  </h4>
-      <h5>  {{application?.id}}  </h5>
-        <div class="form-group">
-          <input type="text" class="form-control" id="libelle" formControlName="libelle" placeholder="libelle"/>
+        <h4 class="col-auto">Application à mettre à jour :  </h4>
+      <h5 class="col-auto">  {{application?.id}}  </h5>
+        <div class="form-group col-auto">
+          <input type="text" class="form-control col" id="libelle" formControlName="libelle" placeholder="libelle"/>
         </div>
-          <div class="form-group">
+          <div class="col-auto">
             <select name="type" id="type" formControlName="type">
               <option selected>Sélection</option>
               <option value="HTTP">HTTP</option>
               <option value="SGDB">SGDB</option>
             </select>
-          </div>
 
-<!--            <button type="submit" class="btn btn-secondary">valider</button>-->
-        <button type="submit" class="btn btn-secondary btn-lg btn-block col-md-2" (click)="openModal(template)">Valider</button>
+          </div>
+        <div class="col-auto">
+        <button type="submit" class="btn btn-secondary btn-lg btn-block" (click)="openModal(template)">Valider</button>
+        </div>
         <br><br>
-        <!--      <pre class="card card-block card-header">{{message}}</pre>-->
         <ng-template #template>
           <div class="modal-body text-center">
             <p>Confirmez-vous la modification ? </p>
@@ -39,6 +39,7 @@
           <strong> Opération annulée ! </strong>
         </alert></ng-template>
   </div>
+        </div>
       </form>
       <form class="pure-form" [formGroup]="nouvelleApplication" (ngSubmit)="ajoutApplication()">
         <div class="form-group">

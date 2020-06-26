@@ -26,6 +26,7 @@ import { ChartsModule} from 'ng2-charts';
 import { ChartComponent } from './web-pages/resultats/chart.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { AccueilComponent } from './web-pages/accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     AdministrationComponent,
     AdminApplicationComponent,
     ChartComponent,
+    AccueilComponent,
 
 
 
