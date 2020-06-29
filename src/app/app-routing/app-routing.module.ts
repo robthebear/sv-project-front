@@ -15,7 +15,7 @@ import {AdminApplicationComponent} from '../web-pages/administration/admin-appli
 const routes: Routes = [
   {path: 'recherche', component: RechercheComponent},
   {path: 'connexion', component: ConnexionComponent},
-  {path: '', component: AppComponent},
+  {path: ' ', component: AppComponent},
   {path: 'profil', component: ProfilComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'mentions legales', component: MentionsLegalesComponent},

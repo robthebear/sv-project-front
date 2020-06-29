@@ -33,7 +33,13 @@ export class ConnexionComponent implements OnInit {
     // utilisateurConnected.id = this.loginForm.controls.identifiant.value;
     // utilisateurConnected.motDePasse = this.loginForm.controls.password.value;
     this.jwtService.login( this.loginForm.controls.identifiant.value, this.loginForm.controls.password.value).subscribe(
-      data => console.log(data)
+      data => {
+        console.log(data);
+        this.router.navigateByUrl('/').finally(() => location.reload());
+
+
+      }
     );
+
   }
 }

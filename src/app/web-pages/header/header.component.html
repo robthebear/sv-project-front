@@ -3,7 +3,7 @@
 
           <a *ngIf="!jwtService.isLogged()" class="nav-item nav-link active" routerLink="/connexion">Connexion</a>
 
-        <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" (click)="onLogout()" routerLink="">Deconnexion</a>
+        <a *ngIf="jwtService.isLogged()" class="nav-item nav-link active" (click)="onLogout()" routerLink=" ">Deconnexion</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
